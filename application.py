@@ -1,10 +1,10 @@
 from flask import Flask
 
-application = Flask(__name__)  # AWS looks for `application` by default
+application = Flask(__name__)  # IMPORTANT: variable must be named `application`
 
 @application.route('/')
-def hello():
+def index():
     return "Hello from Elastic Beanstalk!"
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run(host='0.0.0.0', port=5000)  # expose externally
